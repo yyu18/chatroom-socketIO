@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 
 app.set('view engine','ejs');
-
 app.use(express.static('public'));
-
 app.get('/',(req,res)=>{
     res.render('index')
 })
@@ -13,20 +11,15 @@ server = app.listen(3001,()=>console.log('app listening on port 3001'));
 
 const io = require('socket.io')(server);
 io.on('connection', (socket) => {
-  var people = {};
-
-  socket.on('username',function(user){
-    people[user] = socket.id;
-    console.log(people);
+  socket.username=null;
+  socket.on('new_user',(data)=>{
+    console.log(data);
+    socket.username = data.userId;
+    io.sockets.emit('new_user',{username:socket.username});
   })
 
-  socket.on('clientname',function(client){
-    people[client] = socket.id;
+  socket.on('new message', function(data){
+    console.log(data);
+    io.sockets.emit('new message',{message:data.message,username:socket.username});
   })
-
-  socket.on('chatMessage', function(message){
-      console.log(message);
-      io.to(people[message.receiver]).emit('chatMessage',message.message);
-  })
-
 });

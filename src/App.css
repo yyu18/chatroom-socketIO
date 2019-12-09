@@ -20,18 +20,30 @@ h4 {
 }
 
 .App {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  background-image: url('https://www.gstatic.com/chat/hangouts/bg/650ec88f5cc9e0c827fe6ac61117211d-VidyaNagarajan.jpg');
+  background-size:cover;
+  background-repeat:no-repeat;
+  height:100%;
 }
 
 .right-sidebar {
-  border-left: 1px solid #ccc;
+  background-color: white;
+  border: 12px solid navajowhite;
+  float:right;
+  height: 88%;
+  width:40%;
+  margin:3%;
+  border-radius:3%
 }
 
 .left-sidebar {
-  border-right: 1px solid #ccc;
+  float: left;
+  background-color: white;
+  border: 12px solid navajowhite;
+  height:88%;
+  width:20%;
+  margin:3%;
+  border-radius:3%
 }
 
 .user-profile {
@@ -118,7 +130,8 @@ h4 {
 .chat-screen {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  float: left;
+  width:25%;
 }
 
 .chat-header {
@@ -233,4 +246,54 @@ input[type="text"]:focus {
 .submit-btn:hover {
   color: #5C8436;
   background-color: #222;
+}
+
+/* Chat containers */
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container .right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
 }
